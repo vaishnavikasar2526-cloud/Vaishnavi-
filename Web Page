@@ -1,15 +1,28 @@
 <!DOCTYPE html>
+<!-- Tells the browser that this is an HTML5 document -->
+
 <html lang="en">
+<!-- Root element of the HTML page -->
+
 <head>
+    <!-- Contains meta information about the page -->
+
     <meta charset="UTF-8">
+    <!-- Supports all characters -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Web Page</title>
+    <!-- Makes the page responsive on mobile devices -->
+
+    <title>My GitHub Website</title>
+    <!-- Title shown on browser tab -->
 
     <style>
+        /* CSS styling */
+
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
 
         header {
@@ -17,6 +30,19 @@
             color: white;
             padding: 20px;
             text-align: center;
+        }
+
+        nav {
+            background-color: #0366d6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         section {
@@ -32,28 +58,35 @@
             bottom: 0;
             width: 100%;
         }
-
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
     </style>
 </head>
+
 <body>
+    <!-- Visible content of the webpage -->
 
     <header>
         <h1>Welcome to My GitHub Page</h1>
-        <p>Hosted using GitHub Pages</p>
+        <p>This website is hosted using GitHub Pages</p>
     </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>This website is created using HTML and hosted on GitHub.</p>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
 
-        <h3>My Links</h3>
+    <section>
+        <h2>About This Website</h2>
+        <p>
+            This is a simple web page created using HTML and CSS.
+            It is hosted for free using GitHub Pages.
+        </p>
+
+        <h3>Why GitHub Pages?</h3>
         <ul>
-            <li><a href="https://github.com/">GitHub</a></li>
-            <li><a href="#">Contact</a></li>
+            <li>Free hosting</li>
+            <li>Easy to use</li>
+            <li>Perfect for students & portfolios</li>
         </ul>
     </section>
 
@@ -63,4 +96,5 @@
 
 </body>
 </html>
+
 
