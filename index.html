@@ -1,3 +1,4 @@
+(5)
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,9 +66,72 @@ $(document).ready(function(){
         $("#search-box").val($(this).text());
         $("#suggestions").hide();
     });
-
+    
 });
 </script>
+
+</body>
+</html
+
+(4)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #content {
+            font-size: 20px;
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Page Using JavaScript DOM</h2>
+
+    <div id="content">
+        Click the button to change this content.
+    </div>
+
+    <br>
+    <button onclick="updateContent()">Click Me</button>
+
+    <script>
+        let count = 0;
+
+        function updateContent() {
+            count++;
+
+            const contentDiv = document.getElementById("content");
+
+            // Change text
+            contentDiv.innerHTML = "Button clicked " + count + " times!";
+
+            // Change background color randomly
+            const colors = ["#ffcccc", "#ccffcc", "#ccccff", "#ffffcc"];
+            contentDiv.style.backgroundColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            // Add new paragraph dynamically
+            const newPara = document.createElement("p");
+            newPara.textContent = "New element added at click " + count;
+            document.body.appendChild(newPara);
+        }
+    </script>
 
 </body>
 </html>
