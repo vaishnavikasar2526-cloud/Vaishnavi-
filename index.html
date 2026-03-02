@@ -1,70 +1,33 @@
+<?php
+$items = ["Apple", "Samsung", "Sony", "Dell", "HP", "Lenovo", "Asus", "Canon", "Nikon"];
+
+if(isset($_POST['q'])){
+    $q = strtolower($_POST['q']);
+    foreach($items as $item){
+        if(strpos(strtolower($item), $q) !== false){
+            echo "<div>$item</div>";
+        }
+    }
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AJAX Search Suggestion</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 50px;
-        }
-
-        #search {
-            width: 300px;
-            padding: 8px;
-        }
-
-        #suggestions {
-            width: 300px;
-            border: 1px solid #ccc;
-            display: none;
-            position: absolute;
-            background: white;
-        }
-
-        .suggestion-item {
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .suggestion-item:hover {
-            background-color: #f0f0f0;
-        }
-    </style>
+<title>AJAX Search</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-<h2>Search Products</h2>
-
-<input type="text" id="search" placeholder="Type to search...">
-<div id="suggestions"></div>
+<input type="text" id="search" placeholder="Search...">
+<div id="result" style="border:1px solid #ccc; width:200px;"></div>
 
 <script>
-$(document).ready(function() {
-
-    $("#search").keyup(function() {
-        var query = $(this).val();
-
-        if (query.length > 0) {
-            $.ajax({
-                url: "search.php",
-                method: "POST",
-                data: { search: query },
-                success: function(data) {
-                    $("#suggestions").html(data);
-                    $("#suggestions").fadeIn();
-                }
-            });
-        } else {
-            $("#suggestions").fadeOut();
-        }
+$("#search").keyup(function(){
+    $.post("", {q: $(this).val()}, function(data){
+        $("#result").html(data);
     });
-
-    $(document).on("click", ".suggestion-item", function() {
-        $("#search").val($(this).text());
-        $("#suggestions").fadeOut();
-    });
-
 });
 </script>
 
