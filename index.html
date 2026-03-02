@@ -1,73 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AJAX Search Suggestion</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Dynamic DOM Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px;
+            text-align: center;
+            margin-top: 50px;
         }
-
-        #search-box {
-            width: 300px;
-            padding: 8px;
-        }
-
-        #suggestions {
-            width: 300px;
+        #content {
+            font-size: 20px;
+            margin: 20px;
+            padding: 15px;
             border: 1px solid #ccc;
-            display: none;
-            position: absolute;
-            background: #fff;
+            display: inline-block;
         }
-
-        .suggestion-item {
-            padding: 8px;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-        }
-
-        .suggestion-item:hover {
-            background: #f0f0f0;
         }
     </style>
 </head>
 <body>
 
-<h2>AJAX Search Suggestion</h2>
+    <h2>Dynamic Page Using JavaScript DOM</h2>
 
-<input type="text" id="search-box" placeholder="Start typing..." autocomplete="off">
-<div id="suggestions"></div>
+    <div id="content">
+        Click the button to change this content.
+    </div>
 
-<script>
-$(document).ready(function(){
+    <br>
+    <button onclick="updateContent()">Click Me</button>
 
-    $("#search-box").keyup(function(){
-        let query = $(this).val();
+    <script>
+        let count = 0;
 
-        if(query.length > 0){
-            $.ajax({
-                url: "search.php",
-                method: "POST",
-                data: {search: query},
-                success: function(response){
-                    $("#suggestions").html(response);
-                    $("#suggestions").show();
-                }
-            });
-        } else {
-            $("#suggestions").hide();
+        function updateContent() {
+            count++;
+
+            const contentDiv = document.getElementById("content");
+
+            // Change text
+            contentDiv.innerHTML = "Button clicked " + count + " times!";
+
+            // Change background color randomly
+            const colors = ["#ffcccc", "#ccffcc", "#ccccff", "#ffffcc"];
+            contentDiv.style.backgroundColor =
+                colors[Math.floor(Math.random() * colors.length)];
+
+            // Add new paragraph dynamically
+            const newPara = document.createElement("p");
+            newPara.textContent = "New element added at click " + count;
+            document.body.appendChild(newPara);
         }
-    });
-
-    // Click on suggestion
-    $(document).on("click", ".suggestion-item", function(){
-        $("#search-box").val($(this).text());
-        $("#suggestions").hide();
-    });
-
-});
-</script>
+    </script>
 
 </body>
 </html>
