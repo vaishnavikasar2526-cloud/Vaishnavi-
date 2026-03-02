@@ -1,20 +1,73 @@
-CREATE DATABASE search_db;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Search Suggestion</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
 
-USE search_db;
+        #search-box {
+            width: 300px;
+            padding: 8px;
+        }
 
-CREATE TABLE products (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
+        #suggestions {
+            width: 300px;
+            border: 1px solid #ccc;
+            display: none;
+            position: absolute;
+            background: #fff;
+        }
 
-INSERT INTO products (name) VALUES
-('Apple iPhone'),
-('Apple Watch'),
-('Samsung Galaxy'),
-('Sony Headphones'),
-('Dell Laptop'),
-('HP Laptop'),
-('Lenovo ThinkPad'),
-('Asus ROG Laptop'),
-('Canon Camera'),
-('Nikon Camera');
+        .suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .suggestion-item:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>AJAX Search Suggestion</h2>
+
+<input type="text" id="search-box" placeholder="Start typing..." autocomplete="off">
+<div id="suggestions"></div>
+
+<script>
+$(document).ready(function(){
+
+    $("#search-box").keyup(function(){
+        let query = $(this).val();
+
+        if(query.length > 0){
+            $.ajax({
+                url: "search.php",
+                method: "POST",
+                data: {search: query},
+                success: function(response){
+                    $("#suggestions").html(response);
+                    $("#suggestions").show();
+                }
+            });
+        } else {
+            $("#suggestions").hide();
+        }
+    });
+
+    // Click on suggestion
+    $(document).on("click", ".suggestion-item", function(){
+        $("#search-box").val($(this).text());
+        $("#suggestions").hide();
+    });
+
+});
+</script>
+
+</body>
+</html>
