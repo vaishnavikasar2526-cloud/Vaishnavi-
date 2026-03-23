@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog>
+    <product id="101">
+        <name>Smartphone</name>
+        <category>Electronics</category>
+        <price currency="INR">15000</price>
+        <stock>25</stock>
+        <description>Android smartphone with 6GB RAM and 128GB storage</description>
+    </product>
+
+    <product id="102">
+        <name>Laptop</name>
+        <category>Electronics</category>
+        <price currency="INR">55000</price>
+        <stock>10</stock>
+        <description>15-inch laptop with Intel i5 processor</description>
+    </product>
+
+    <product id="103">
+        <name>Headphones</name>
+        <category>Accessories</category>
+        <price currency="INR">2000</price>
+        <stock>50</stock>
+        <description>Wireless Bluetooth headphones</description>
+    </product>
+
+    <product id="104">
+        <name>Coffee Maker</name>
+        <category>Home Appliances</category>
+        <price currency="INR">3500</price>
+        <stock>15</stock>
+        <description>Automatic drip coffee maker</description>
+    </product>
+</catalog>
